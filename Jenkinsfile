@@ -1,24 +1,24 @@
 pipeline {
     agent {
-        label 'Docker-Node'
+        label 'j-server'
     }
 
     environment {
-        KUBECONFIG_CREDENTIAL_ID = 'k8s-kubeconfig-dev'
+        KUBECONFIG_CREDENTIAL_ID = 'k8s'
         version = "backend_${env.BUILD_NUMBER}"
-        docker_image = "persevcareers6577/perseverance-project:${version}"
+        docker_image = "amzath0304/backend:${version}"
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/persevcareers/Project-Final-Backend.git'
+                git branch: 'main', url: 'https://github.com/AMZATH0320/backend.git'
             }
         }
 
        stage('Login to Docker Hub') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'docker-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                     sh "echo \"$DOCKER_PASSWORD\" | sudo docker login --username \"$DOCKER_USERNAME\" --password-stdin"
                 }
             }
@@ -36,7 +36,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    sh "sudo docker push 'persevcareers6577/perseverance-project:${version}'"
+                    sh "sudo docker push 'amzath0304/backend:${version}'"
                 }
             }
         } 
