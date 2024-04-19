@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     def dockerfilePath = '.'
-                   sh "sudo docker build -t 'persevcareers6577/perseverance-project:${version}' ."
+                   sh "sudo docker build -t 'amzath0304/backend:${version}' ."
                 }
             }
         }
