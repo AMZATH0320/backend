@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: backend-api
-        image: persevcareers6577/perseverance-project:VERSION
+        image: amzath0304/backend:VERSION
         imagePullPolicy: Always
         env:
           - name: DB_CONN_STR
