@@ -66,7 +66,7 @@ pipeline {
                       {
                          sh "echo ${VERSION}"
                          sh "export KUBECONFIG=${kubeconfigPath}"
-                         //sh "kubectl scale deploy api --replicas=0 -n three-tier"
+                         sh "kubectl scale deploy api --replicas=0 -n three-tier"
                          sh" sed -i 's/VERSION/${VERSION}/g' backend.yml"
                          sh " cat backend.yml"
                          sh "kubectl apply -f backend.yml --validate=false"
