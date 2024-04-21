@@ -20,14 +20,14 @@ spec:
         image: amzath0304/backend:VERSION
         imagePullPolicy: Always
         env:
-          - name: DB_CONN_STR
+          - name: MONGO_CONN_STR
             value: mongodb://mongodb-svc:27017/perseverance?directConnection=true
-          - name: DB_USERNAME
+          - name: MONGO_USERNAME
             valueFrom:
               secretKeyRef:
                 name: db-secret
                 key: username
-          - name: DB_PASSWORD
+          - name: MONGO_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: db-secret
