@@ -72,6 +72,7 @@ pipeline {
                          sh "kubectl apply -f backend.yml --validate=false"
                          sh "kubectl get pods -n three-tier"
                          sh "kubectl get svc -n three-tier"
+                         //sh "echo haha"
                       }
                     }
                 }
